@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Pirkinių sąrašas</div>
+            <div class="card-body">
+                <ul class="list-group" >
+                    <li class="list-group-item" *ngFor="let vardas of vardai">
+                        {{ vardas }}
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Pridėti naują vardą</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="" class="form-label">Vardas: </label>
+                    <input type="text" class="form-control">
+                </div>
+                <button class="btn btn-success">Pridėti</button>
+            </div>
+        </div>
+    </div>
+</div>
