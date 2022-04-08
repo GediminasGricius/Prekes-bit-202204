@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/ProductModel';
 
 @Component({
   selector: 'app-products',
@@ -6,28 +7,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  public products:Product[]=[];
 
-  public vardai=["Jonas", "Antanas", "Kestas"];
-
-
-  constructor() { }
+  constructor() { 
+    let data=localStorage.getItem("products");
+    if (data!=null){
+      this.products=JSON.parse(data);
+    }
+  }
 
   ngOnInit(): void {
   }
 
-  public addNewVardas(vardas:HTMLInputElement){
-    if (vardas.value!=''){
-      this.vardai.push(vardas.value);
-      vardas.value='';
+  private save(){
+    localStorage.setItem('products', JSON.stringify(this.products));
+  }
+
+  public addNewProduct(name:HTMLInputElement, count:HTMLInputElement){
+    if (name.value!=''){
+      this.products.push({
+        name  : name.value,
+        count : count.valueAsNumber
+      });
+      name.value='';
+      count.value='';
+      this.save();
     }
   }
 
-  public removeVardas(i:number){
-    this.vardai.splice(i, 1);
+  public removeProduct(i:number){
+    this.products.splice(i, 1);
+    this.save();
   }
-
-  
-  
-
-
 }
