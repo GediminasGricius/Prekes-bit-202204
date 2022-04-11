@@ -3,12 +3,9 @@
         <div class="card">
             <div class="card-header">Pirkinių sąrašas</div>
             <div class="card-body">
-                <ul class="list-group" >
-                    <li class="list-group-item" *ngFor="let product of products; let i=index">
-                       {{i+1}}. {{ product.name }}, kiekis: {{product.count}} <button class="btn btn-danger float-end" (click)="removeProduct(i)">Ištrinti</button>
-                    </li>
-                    
-                </ul>
+                <div class="row">
+                    <app-product-item *ngFor="let product of products; let i=index" class="col-md-4" [product]="product" [index]="i" (afterRemoveProduct)="removeProduct($event)" ></app-product-item>
+                 </div>
             </div>
         </div>
     </div>
@@ -20,10 +17,11 @@
                 <div class="mb-3">
                     <label for="" class="form-label">Pavadinimas: </label>
                     <input type="text" class="form-control" #newName >
+               
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Kiekis: </label>
-                    <input type="number" class="form-control" #newCount >
+                    <input type="number" class="form-control" #newCount  >
                 </div>
                 <button class="btn btn-success" (click)="addNewProduct(newName, newCount)">Pridėti</button>
             </div>

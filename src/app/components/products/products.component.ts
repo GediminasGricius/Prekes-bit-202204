@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
     if (data!=null){
       this.products=JSON.parse(data);
     }
+    
   }
 
   ngOnInit(): void {
