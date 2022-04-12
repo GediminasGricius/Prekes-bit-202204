@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/models/ProductModel';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -12,18 +13,16 @@ export class ProductItemComponent implements OnInit {
   @Input() public product:Product={name:"",count:0};;
   @Input() public index:number=0;
 
-  @Output() public afterRemoveProduct=new EventEmitter<number>();
-  
 
-  constructor() { 
-   
+  constructor(private productService:ProductService) { 
+    
   }
 
   ngOnInit(): void {
   }
 
   public deleteProduct(){
-    this.afterRemoveProduct.emit(this.index);
+   this.productService.delete(this.index);
   }
 
 }

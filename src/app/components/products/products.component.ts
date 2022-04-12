@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/ProductModel';
+import { ProductService } from 'src/app/services/product.service';
+
 
 @Component({
   selector: 'app-products',
@@ -7,37 +9,27 @@ import { Product } from 'src/app/models/ProductModel';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  
   public products:Product[]=[];
 
-  constructor() { 
-    let data=localStorage.getItem("products");
-    if (data!=null){
-      this.products=JSON.parse(data);
-    }
-    
+  constructor(private productService:ProductService) { 
+    productService.load();
+    this.products=productService.products;
   }
 
   ngOnInit(): void {
+    
   }
 
-  private save(){
-    localStorage.setItem('products', JSON.stringify(this.products));
-  }
+ 
 
   public addNewProduct(name:HTMLInputElement, count:HTMLInputElement){
     if (name.value!=''){
-      this.products.push({
-        name  : name.value,
-        count : count.valueAsNumber
-      });
+      this.productService.add(name.value,count.valueAsNumber);
       name.value='';
       count.value='';
-      this.save();
+
     }
   }
 
-  public removeProduct(i:number){
-    this.products.splice(i, 1);
-    this.save();
-  }
 }
