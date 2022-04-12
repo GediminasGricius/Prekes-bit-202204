@@ -17,19 +17,8 @@ export class ProductsComponent implements OnInit {
     this.products=productService.products;
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {  }
 
- 
-
-  public addNewProduct(name:HTMLInputElement, count:HTMLInputElement){
-    if (name.value!=''){
-      this.productService.add(name.value,count.valueAsNumber);
-      name.value='';
-      count.value='';
-
-    }
-  }
+  
 
 }
