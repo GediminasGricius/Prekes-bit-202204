@@ -8,7 +8,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class NavigationComponent implements OnInit {
 
- 
+  public productCount:number=0;
+
+  constructor(private productService:ProductService){
+    this.productCount=this.productService.getProductsCount();
+
+    this.productService.onProductsChange.subscribe(()=>{
+      this.productCount=this.productService.getProductsCount();
+    });
+
+  }
 
   ngOnInit(): void {
     

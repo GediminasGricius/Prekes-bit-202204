@@ -27,6 +27,8 @@ export class ProductEditComponent implements OnInit {
 
   public update(){
      this.productService.update(this.index,this.name,this.count);
+
+     
      this.router.navigate(["/"]);
   }
 

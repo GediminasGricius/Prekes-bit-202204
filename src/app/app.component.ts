@@ -12,6 +12,7 @@ import { ProductService } from './services/product.service';
 export class AppComponent {
   constructor(private productService:ProductService) { 
     this.productService.load();
+   
   }
 
   title = 'prekes';
