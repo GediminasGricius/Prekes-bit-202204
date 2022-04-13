@@ -31,5 +31,15 @@ export class ProductService {
     this.products.splice(index,1);
     this.save();
   }
+
+  public get(index:number){
+    return this.products[index];
+  }
+
+  public update(index:number, name:String,count:number){
+    this.products[index].name=name;
+    this.products[index].count=count;
+    this.save();
+  }
   
 }

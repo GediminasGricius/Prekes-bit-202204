@@ -4,6 +4,7 @@
             <h5>{{index+1}}. {{product.name}}</h5>
             Kiekis: {{product.count}}
             <hr>
+            <a class="btn btn-success" [routerLink]="['/edit', index]">Redaguoti</a> &nbsp;
             <button class="btn btn-danger" (click)="deleteProduct()">Ištrinti</button>
 
         

@@ -9,10 +9,12 @@ import { ProductItemComponent } from './components/products/product-item/product
 import { ProductNewComponent } from './components/products/product-new/product-new.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
 
 const prekesRoutes:Routes=[
   { path:'', component:ProductsComponent},
-  { path:'new', component:ProductNewComponent}
+  { path:'new', component:ProductNewComponent},
+  { path:'edit/:index', component:ProductEditComponent}
 ];
 
 
@@ -22,7 +24,8 @@ const prekesRoutes:Routes=[
     ProductsComponent,
     ProductItemComponent,
     ProductNewComponent,
-    NavigationComponent
+    NavigationComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,
